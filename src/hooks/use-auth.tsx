@@ -23,6 +23,10 @@ interface AuthProps {
     mutate: () => void;
     isPending: boolean;
   };
+  logout: {
+    mutate: () => void;
+    isPending: boolean;
+  };
 }
 
 const authContext = createContext<AuthProps>({} as AuthProps);
@@ -41,6 +45,10 @@ const useAuthData = () => {
       supabase.auth.signInWithOAuth({
         provider: "google",
       }),
+  });
+
+  const logout = useMutation({
+    mutationFn: () => supabase.auth.signOut(),
   });
 
   const checkAuthentication = async () => {
@@ -83,6 +91,7 @@ const useAuthData = () => {
     session,
     isLoggedIn: !!session,
     loading,
+    logout,
   };
 };
 

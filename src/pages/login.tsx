@@ -4,19 +4,25 @@ import { Flex, Text } from "@radix-ui/themes";
 
 const Login = () => {
   return (
-    <Flex className="h-screen w-screen" align="center" justify="center">
+    <Flex
+      className="h-screen w-screen bg-gray-200"
+      align="center"
+      justify="center"
+    >
       <Flex
         direction="column"
-        className="w-full md:w-2/4 lg:w-1/4 p-4 md:p-0"
+        className="w-full md:w-2/4 lg:w-1/4 bg-white drop-shadow-lg rounded-xl p-4"
         gap="4"
+        align="center"
       >
         <Text size="6" weight="bold">
-          Welcome to, Chat App
+          Chat App
         </Text>
-        <LoginForm />
+        <Text size="2">Login to continue</Text>
+        {/* <LoginForm />
         <Text size="6" weight="bold" align="center">
           -- OR --
-        </Text>
+        </Text> */}
         <SocialLogin />
       </Flex>
     </Flex>

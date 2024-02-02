@@ -13,7 +13,7 @@ interface ChatUserProps {
 }
 const ChatUser = (props: ChatUserProps) => {
   const { user } = props;
-  const { loginUser } = useAuth();
+  const { loginUser, logout } = useAuth();
   const router = useRouter();
 
   return (
@@ -23,9 +23,19 @@ const ChatUser = (props: ChatUserProps) => {
       gap="4"
     >
       <Flex direction="column" gap="4">
-        <Text size="4" weight="bold">
-          Login As
-        </Text>
+        <Flex align="center" justify="between">
+          <Text size="4" weight="bold">
+            Login As
+          </Text>
+          <Button
+            disabled={logout.isPending}
+            variant="soft"
+            color="red"
+            onClick={() => logout.mutate()}
+          >
+            {logout.isPending ? "loading..." : "Logout"}
+          </Button>
+        </Flex>
         <Flex gap="3" align="center">
           <Avatar
             radius="full"
